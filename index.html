@@ -1,0 +1,358 @@
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+
+<style type="text/css">
+  body {
+      width:800px;
+      margin:40px auto;
+      font-family: Garamond, georgia;
+      background-color: #FEFEFE;
+  }
+
+  h1 {     
+      margin-top: 60px;
+      margin-bottom: 1px;
+      font-size: 30px;
+      opacity: .75;
+  }
+
+  h2 {
+    margin-top: 1px;
+    margin-bottom: 2px;
+    border-bottom:2px solid #525252;
+    font-size: 20px;
+    opacity: .75;
+
+  }
+
+  h3 {
+    font-size: 20px;
+    font-style:bold;
+    font-family:Garamond;
+    color: #333333;
+  }
+
+  h7 {
+    font-size: 15px;
+    opacity: .9;
+    color: #525252;
+  }
+
+  p{
+    font-size: 18px;
+    font-family: Garamond;
+
+  }
+
+  ul{
+    font-size:12px;
+    color:#525252;
+  }
+
+  #wrapper {
+          width: 600px;
+          margin: -30px auto 0;
+      }
+  #map {
+          width: 600px;
+          height: 350px;
+          position: relative;
+
+      }
+  .stroke {
+        fill: none;
+        stroke: #888;
+        stroke-width: 2px;
+      }
+      
+  .fill {
+        fill: #fff;
+      }
+      
+  .graticule {
+        fill: none;
+        stroke: #777;
+        stroke-width: .5px;
+        stroke-opacity: .5;
+      }
+      
+  .land {
+        fill: #222;
+      }
+      
+  .boundary {
+        fill: none;
+        stroke: #fff;
+        stroke-width: .5px;
+      }
+  .country {
+          stroke: white;
+      }
+  #play, #clock {
+        
+        top: 10px;
+      }
+
+  #play {
+        left: 15px;
+      }
+  #clock {
+        left: 65px;
+
+      }
+
+  </style>
+
+<h1>Did the War on Drugs just globalize the problem? </h1>
+<h2>Maybe, but don't look at how much governments seize to prove it </h2>
+<h7>Lydia Chain
+
+<p>The global drug trade is worth hundreds of billions of dollars.  It is the root of violence, crime, and gang activity.  But how can we go about understanding the scope of the problem when the trade is underground?  What do we do when the data is literally &lsquo;off the books?&rsquo;</p>
+
+<p>It&rsquo;s tempting to grab onto what little data is available to explain trends and seek solutions.  When governments seize drugs and report it to the United Nations Office on Drugs and Crime, there is a concrete number to analyze. Unfortunately, this data may also be misleading.</p>
+
+<p>&ldquo;It will not tell the whole story,&rdquo; said Bruce Bagley, who studies drug trafficking at the University of Miami. </p>
+
+<p>Take the proliferation of drug smuggling routes as the United States has tried to play &ldquo;Whack-a-Mole,&rdquo; as Bagley says, with the cocaine industry.  Over the past quarter-century, the US has spent billions of dollars trying to block drug smuggling, but our efforts have just made the cartels get more creative, jumping between countries and coasts and expanding across the world.
+</p>
+
+<p>This animation shows the amount of cocaine each government has seized annually since 1985.  You can see the amounts increasing and more countries seizing cocaine, but how accurate it is, really? </p>
+
+<div id="wrapper">  
+      <div id="map"></div>
+      <button id="play">play</button>
+      <span id="clock">year</span>
+  </div>
+
+<p>There are some major issues with conflating seizure data with the amount of drug actually in a given country.  Funnily enough, we can use the seizure data itself to show that.</p>
+
+<h3>1. The amount of drugs seized may not represent how much drug is actually in a country </h3>
+
+<div class= "chart", id = "marijuana">
+    <img src="/image002.png">
+  </div>
+
+<p>That enormous spike in Mexico&rsquo;s drug seizures was the result of a single drug bust, as <a href="http://www.nytimes.com/1984/11/23/world/vast-undreamed-of-drug-use-feared.html">reported</a> by the New York Times.  Officials found eight times more marijuana than anyone thought Mexico even produced annually.  Colombia had a similar story in 1983 and 1984. You can&rsquo;t look at a seizure number and assume it represents how many drugs are actually in the country.
+</p>
+
+<h3>2. Corruption warps the numbers </h3>
+
+<div class = "chart", id = "cocaine"> 
+    <img src="/image003.png">
+</div>
+
+<p>If officials have been bribed to let drugs through their inspection areas, &ldquo;seizure&rdquo; data is useless.  Bagley says Guatemala has become a major conduit for cocaine products, but the seizure data does not reflect this. Instead, it looks like there is only a minimal amount of cocaine flowing through Guatemala.  He also pointed out Mexico and Venezuela as countries with corruption that may distort seizure data.</p>
+
+<h3>3. There's no way of knowing if the country consumes the drug or serves as a port to smuggle the drugs elsewhere </h3>
+
+<div class = "chart", id = "hashish"> 
+    <img src="image001.png">
+</div>
+
+<p>Spain seizes more than twice as much hashish compared to other countries.  But based on this data alone, we can&rsquo;t know if it&rsquo;s a result of the relaxed laws for personal consumption or because of the physical proximity across the Straits of Gibralter to Morocco, which is one of the major hashish producers in the world.  It&rsquo;s probably both in-country use and a port for the rest of Europe, but we don&rsquo;t know the percentage based on these graphs. Or, it could just indicate comprehensive drug trafficing laws and a strong police force.</p>
+
+<p>When I asked Bagley how he conducts his own research, what data he analyzes, he laughed and said &ldquo;I spend a lot of time in Latin America and interview everybody. &rdquo;  He has spent his career building personal relationships to better understand cartels and drug smuggling patterns.  Drug seizure data can show general trends, but needs to be taken in the context of interviews and other data like consumption and production data in order to tell the full story.</p>
+
+<h7> Sources:</h7>
+<ul>
+    <li>Bruce Bagley, University of Miami</li>
+    <li>United Nations Office on Drugs and Crime</li>
+    <li>European Monitoring Centre for Drugs and Drug Addiction</li>
+    <li>http://bl.ocks.org/rgdonohue/9280446</li>
+  </ul>
+
+  <script>
+  //globals
+  //attribution: http://bl.ocks.org/rgdonohue/9280446
+
+var width, height, projection, path, graticule, svg, attributeArray = [], currentAttribute = 0, playing = false;
+
+function init() {
+
+  setMap();
+  animateMap();
+
+}
+
+function setMap() {
+
+  width = 600, height = 350;  // map width and height, matches 
+
+  projection = d3.geo.eckert5()   // define our projection with parameters
+    .scale(100)
+    .translate([width / 2, height / 2])
+    .precision(.1);
+
+  path = d3.geo.path()  // create path generator function
+      .projection(projection);  // add our define projection to it
+
+  graticule = d3.geo.graticule(); // create a graticule
+
+  svg = d3.select("#map").append("svg")   // append a svg to our html div to hold our map
+      .attr("width", width)
+      .attr("height", height);
+
+  svg.append("defs").append("path")   // prepare some svg for outer container of svg elements
+      .datum({type: "Sphere"})
+      .attr("id", "sphere")
+      .attr("d", path);
+
+  svg.append("use")   // use that svg to style with css
+      .attr("class", "stroke")
+      .attr("xlink:href", "#sphere");
+
+  svg.append("path")    // use path generator to draw a graticule
+      .datum(graticule)
+      .attr("class", "graticule")
+      .attr("d", path);
+
+  loadData();  // let's load our data next
+
+}
+
+function loadData() {
+
+  queue()   // queue function loads all external data files asynchronously 
+    .defer(d3.json, "world-topo.json")  // our geometries
+    .defer(d3.csv, "cocaine_byyear.csv")  // and associated data in csv file
+    .await(processData);   // once all files are loaded, call the processData function passing
+                           // the loaded objects as arguments
+}
+
+function processData(error,world,countryData) {
+  // function accepts any errors from the queue function as first argument, then
+  // each data object in the order of chained defer() methods above
+
+  var countries = world.objects.countries.geometries;  // store the path in variable for ease
+  for (var i in countries) {    // for each geometry object
+    for (var j in countryData) {  // for each row in the CSV
+      if(countries[i].properties.id == countryData[j].id) {   // if they match
+        for(var k in countryData[i]) {   // for each column in the a row within the CSV
+          if(k != 'name' && k != 'id') {  // let's not add the name or id as props since we already have them
+            if(attributeArray.indexOf(k) == -1) { 
+               attributeArray.push(k);  // add new column headings to our array for later
+            }
+            countries[i].properties[k] = Number(countryData[j][k])  // add each CSV column key/value to geometry object
+          } 
+        }
+        break;  // stop looking through the CSV since we made our match
+      }
+    }
+  }
+  d3.select('#clock').html(attributeArray[currentAttribute]);  // populate the clock initially with the current year
+  drawMap(world);  // let's mug the map now with our newly populated data object
+}
+
+function drawMap(world) {
+
+    svg.selectAll(".country")   // select country objects (which don't exist yet)
+      .data(topojson.feature(world, world.objects.countries).features)  // bind data to these non-existent objects
+      .enter().append("path") // prepare data to be appended to paths
+      .attr("class", "country") // give them a class for styling and access later
+      .attr("id", function(d) { return "code_" + d.properties.id; }, true)  // give each a unique id for access later
+      .attr("d", path); // create them using the svg path generator defined above
+
+    d3.selectAll('.country')  // select all the countries
+    .attr('fill', function(d) {
+      
+      var val = d.properties[attributeArray[currentAttribute]];
+      return colorControl(val);
+    });
+}
+
+function colorControl(val){
+      if(isNaN(val)){
+        return "#ccc"
+      }
+      if(val < 1){
+        return "#E6E6FF"
+      }
+
+      if(val < 50){
+        return "#CCCCFF"
+      }
+
+      if(val <100){
+        return "#9999FF"
+      }
+
+      if(val < 500){
+        return "#6666FF"
+      }
+      if(val < 1000){
+        return "#0000E6"
+      }
+
+      if(val < 5000){
+        return "#0000B2"
+      }
+
+      if(val < 10000){
+        return "#000099"
+      }
+
+      if(val < 50000){
+        return "#000080"
+      }
+
+      if(val <100000){
+        return "#000066"
+      }
+
+      if(val < 500000){
+        return "#00004C"
+      }
+
+      if(val < 1000000){
+        return "#00001A"
+      }
+      return "000000"
+}
+
+
+function sequenceMap() {
+  
+
+    d3.selectAll('.country').transition()  //select all the countries and prepare for a transition to new values
+      .duration(750)  // give it a smooth time period for the transition
+      .attr('fill', function(d) {
+        var val = d.properties[attributeArray[currentAttribute]];
+        return colorControl(val);
+
+      })
+
+}
+
+function animateMap() {
+
+  var timer;  // create timer object
+  d3.select('#play')  
+    .on('click', function() {  // when user clicks the play button
+      if(playing == false) {  // if the map is currently playing
+        timer = setInterval(function(){   // set a JS interval
+          if(currentAttribute < attributeArray.length-1) {  
+              currentAttribute +=1;  // increment the current attribute counter
+          } else {
+              currentAttribute = 0;  // or reset it to zero
+          }
+          sequenceMap();  // update the representation of the map 
+          d3.select('#clock').html(attributeArray[currentAttribute]);  // update the clock
+        }, 2000);
+      
+        d3.select(this).html('stop');  // change the button label to stop
+        playing = true;   // change the status of the animation
+      } else {    // else if is currently playing
+        clearInterval(timer);   // stop the animation by clearing the interval
+        d3.select(this).html('play');   // change the button label to play
+        playing = false;   // change the status again
+      }
+  });
+}
+
+
+window.onload = init();  // magic starts here
+
+  
+</script>
